@@ -17,6 +17,88 @@
       </div>
     </div>
 
-    
+    <!-- taches container -->
+    <div class="my-container p-4 h-full">
+      <div
+        class="h-full w-full max-md:h-auto flex justify-between gap-4 max-md:flex-col"
+      >
+        <!-- HACK: side of red taches (to-do) -->
+        <div class="red-card w-1/3 max-md:w-full flex flex-col gap-4">
+          <div class="h-10 bg-redBg center px-4 text-redColor">
+            <p class="w-full">In progress: 0</p>
+          </div>
+          <div class="bg-lightGrayColor min-h-24 p-4 flex flex-col gap-4">
+            <!-- tache card -->
+            <div
+              class="bg-white rounded-sm min-h-24 p-4 text-darkGrayColor text-sm flex flex-col gap-4 border-b border-redColor"
+            >
+              <div class="flex flex-wrap gap-2 text-black font-bold">
+                <p>Lorem ipsum dolor sit amet.</p>
+                <p>#324343</p>
+              </div>
+              <p class="">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio officia dignissimos nostrum, accusamus obcaecati ipsa quae, perspiciatis debitis architecto omnis hic. Velit quis ex reprehenderit libero eius vel, sit earum.
+              </p>
+              <div class="flex gap-1">
+                <button class="primary-btn">Edit</button>
+                <button class="primary-btn">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HACK: side of orange taches (in progress) -->
+        <div class="orange-card w-1/3 max-md:w-full flex flex-col gap-4">
+          <div class="h-10 bg-orangeBg center px-4 text-orangeColor">
+            <p class="w-full">To-Do: 0</p>
+          </div>
+          <div class="bg-lightGrayColor min-h-24 p-4 flex flex-col gap-4">
+            <!-- tache card -->
+            <div
+              class="bg-white rounded-sm min-h-24 p-4 text-darkGrayColor text-sm flex flex-col gap-4 border-b border-orangeColor"
+            >
+              <div class="flex flex-wrap gap-2 text-black font-bold">
+                <p>Lorem ipsum dolor sit amet.</p>
+                <p>#324343</p>
+              </div>
+              <p class="">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse,
+                eveniet!
+              </p>
+              <div class="flex gap-1">
+                <button class="primary-btn">Edit</button>
+                <button class="primary-btn">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HACK: side of green taches (done) -->
+        <div class="green-card w-1/3 max-md:w-full flex flex-col gap-4">
+          <div class="h-10 bg-greenBg center px-4 text-greenColor">
+            <p class="w-full">Done: 0</p>
+          </div>
+          <div class="bg-lightGrayColor min-h-24 p-4 flex flex-col gap-4">
+            <!-- tache card -->
+            <div
+              class="bg-white rounded-sm min-h-24 p-4 text-darkGrayColor text-sm flex flex-col gap-4 border-b border-greenColor"
+            >
+              <div class="flex flex-wrap gap-2 text-black font-bold">
+                <p>Lorem ipsum dolor sit amet.</p>
+                <p>#324343</p>
+              </div>
+              <p class="">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate eum excepturi ipsa at ipsum laudantium odit quis dolor omnis quaerat qui reiciendis quia, dolores sapiente eius ullam. Consequatur, eos quis.
+                Omnis fuga saepe dolore. Eum illum recusandae nihil, cupiditate obcaecati corporis ipsa laboriosam repellat ipsum magni asperiores, ullam ea eius dicta animi quisquam adipisci fuga doloribus quis minima labore saepe!
+              </p>
+              <div class="flex gap-1">
+                <button class="primary-btn">Edit</button>
+                <button class="primary-btn">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
