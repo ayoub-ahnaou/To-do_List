@@ -15,11 +15,14 @@ body {
     @apply px-40 max-lg:px-4 flex flex-col gap-4;
 }
 .primary-btn {
-    @apply px-4 text-[10px] bg-black rounded-full outline-none text-center text-lightGrayColor;
+    @apply px-4 text-[10px] bg-black rounded-md outline-none text-center text-lightGrayColor;
 }
 .primary-input {
-    @apply bg-lightGrayColor rounded-full px-4 outline-none border-none w-64 max-md:w-32;
+    @apply bg-lightGrayColor px-2 rounded-md outline-none border focus:border-black w-full;
 }
 .check {
     border: 1px solid red;
+}
+.task-card {
+    @apply bg-white rounded-sm min-h-24 p-4 text-darkGrayColor text-sm flex flex-col gap-1 border-b;
 }
