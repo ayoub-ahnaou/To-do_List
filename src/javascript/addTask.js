@@ -3,6 +3,10 @@ const description = document.getElementById("description");
 const statut = document.getElementById("statut");
 const date = new Date();
 
+let countRedTasks = 0;
+let countOrangesTasks = 0;
+let countGreensTasks = 0;
+
 const handleAddTask = () => {
     let errTitle = document.querySelector("#err-mssg-title");
     let errDesc = document.querySelector("#err-mssg-desc");
@@ -38,6 +42,7 @@ const handleAddTask = () => {
                 </div>
               </li>
             `;
+            countRedTasks++;
         }
         if(statut.value == "doing"){
             document.getElementById("orange-card").innerHTML += `
@@ -56,6 +61,7 @@ const handleAddTask = () => {
                 </div>
               </li>
             `;
+            countOrangesTasks++;
         }
         if(statut.value == "done"){
             document.getElementById("green-card").innerHTML += `
@@ -74,7 +80,12 @@ const handleAddTask = () => {
                 </div>
               </li>
             `;
+            countGreensTasks++;
         }
+
+        document.getElementById("countRedTasks").innerHTML = "To-Do: " + countRedTasks;
+        document.getElementById("countOrangeTasks").innerHTML = "In progress: " + countOrangesTasks;
+        document.getElementById("countGreenTasks").innerHTML = "Done: " + countGreensTasks;
 
         modal.style.display = "none";
         blurBg.style.filter = "blur(0px)";
