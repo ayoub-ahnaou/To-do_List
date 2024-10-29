@@ -26,7 +26,9 @@ const handleAddTask = () => {
         const ID = generateID();
 
         if(statut.value == "to-do"){
-            document.getElementById("red-card").innerHTML += `
+          const redTasks = document.getElementById("red-card");
+          const task = document.createElement("li");
+          task.innerHTML = `
                 <li
                 class="task-card border-redColor"
               >
@@ -34,53 +36,60 @@ const handleAddTask = () => {
                   <p>${title.value}.</p>
                   <p>${"#"+ID}</p>
                 </div>
-                <span class="font-medium text-xs">${date.toLocaleString()}</span>
-                <p class="pb-2">${description.value}</p>
+                <span class="font-medium text-xs">${new Date().toLocaleString()}</span>
+                <p class="pb-2 tracking-wide">${description.value}</p>
                 <div class="flex gap-1">
                   <button class="primary-btn">Edit</button>
-                  <button class="primary-btn">Delete</button>
+                  <button id="delete-btn" onclick="handelDeleteTask()" class="primary-btn">Delete</button>
                 </div>
               </li>
             `;
-            countRedTasks++;
+          redTasks.appendChild(task);
+          countRedTasks++;
         }
         if(statut.value == "doing"){
-            document.getElementById("orange-card").innerHTML += `
-                <li
-                class="task-card border-orangeColor"
-              >
-                <div class="flex flex-wrap gap-2 text-black font-bold">
-                  <p>${title.value}.</p>
-                  <p>${"#"+ID}</p>
-                </div>
-                <span class="font-medium text-xs">${date.toLocaleString()}</span>
-                <p class="pb-2">${description.value}</p>
-                <div class="flex gap-1">
-                  <button class="primary-btn">Edit</button>
-                  <button class="primary-btn">Delete</button>
-                </div>
-              </li>
-            `;
-            countOrangesTasks++;
+          const orangeTasks = document.getElementById("orange-card");
+          const task = document.createElement("li");
+          task.innerHTML += `
+              <li
+              class="task-card border-orangeColor"
+            >
+              <div class="flex flex-wrap gap-2 text-black font-bold">
+                <p>${title.value}.</p>
+                <p>${"#"+ID}</p>
+              </div>
+              <span class="font-medium text-xs">${new Date().toLocaleString()}</span>
+              <p class="pb-2 tracking-wide">${description.value}</p>
+              <div class="flex gap-1">
+                <button class="primary-btn">Edit</button>
+                <button id="delete-btn" onclick="handelDeleteTask()" class="primary-btn">Delete</button>
+              </div>
+            </li>
+          `;
+          orangeTasks.appendChild(task);
+          countOrangesTasks++;
         }
         if(statut.value == "done"){
-            document.getElementById("green-card").innerHTML += `
-              <li
-                class="task-card border-greenColor"
-              >
-                <div class="flex flex-wrap gap-2 text-black font-bold">
-                  <p>${title.value}.</p>
-                  <p>${"#"+ID}</p>
-                </div>
-                <span class="font-medium text-xs">${date.toLocaleString()}</span>
-                <p class="pb-2">${description.value}</p>
-                <div class="flex gap-1">
-                  <button class="primary-btn">Edit</button>
-                  <button class="primary-btn">Delete</button>
-                </div>
-              </li>
-            `;
-            countGreensTasks++;
+          const greenTasks = document.getElementById("green-card");
+          const task = document.createElement("li");
+          task.innerHTML += `
+            <li
+              class="task-card border-greenColor"
+            >
+              <div class="flex flex-wrap gap-2 text-black font-bold">
+                <p>${title.value}.</p>
+                <p>${"#"+ID}</p>
+              </div>
+              <span class="font-medium text-xs">${date.toLocaleString()}</span>
+              <p class="pb-2 tracking-wide">${description.value}</p>
+              <div class="flex gap-1">
+                <button class="primary-btn">Edit</button>
+                <button id="delete-btn" onclick="handelDeleteTask()" class="primary-btn">Delete</button>
+              </div>
+            </li>
+          `;
+          greenTasks.appendChild(task);
+          countGreensTasks++;
         }
 
         document.getElementById("countRedTasks").innerHTML = "To-Do: " + countRedTasks;
