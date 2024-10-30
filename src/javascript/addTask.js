@@ -40,7 +40,7 @@ const handleAddTask = () => {
                 <p class="pb-2 tracking-wide">${description.value}</p>
                 <div class="flex gap-1">
                   <button class="primary-btn">Edit</button>
-                  <button id="delete-btn" class="primary-btn" onclick="handleDeleteTask(event)">Delete</button>
+                  <button id="delete-btn" class="primary-btn" onclick="handleDeleteTask(event, '${statut.value}')">Delete</button>
                 </div>
               </li>
             `;
@@ -62,7 +62,7 @@ const handleAddTask = () => {
               <p class="pb-2 tracking-wide">${description.value}</p>
               <div class="flex gap-1">
                 <button class="primary-btn">Edit</button>
-                <button id="delete-btn" class="primary-btn" onclick="handleDeleteTask(event)">Delete</button>
+                <button id="delete-btn" class="primary-btn" onclick="handleDeleteTask(event, '${statut.value}')">Delete</button>
               </div>
             </li>
           `;
@@ -84,7 +84,7 @@ const handleAddTask = () => {
               <p class="pb-2 tracking-wide">${description.value}</p>
               <div class="flex gap-1">
                 <button class="primary-btn">Edit</button>
-                <button id="delete-btn" class="primary-btn" onclick="handleDeleteTask(event)">Delete</button>
+                <button id="delete-btn" class="primary-btn" onclick="handleDeleteTask(event, '${statut.value}')">Delete</button>
               </div>
             </li>
           `;
