@@ -29,8 +29,8 @@ const handleAddTask = () => {
           const redTasks = document.getElementById("red-card");
           const task = document.createElement("li");
           task.innerHTML = `
-                <li
-                class="task-card border-redColor"
+              <li
+              class="task-card border-redColor"
               >
                 <div class="flex flex-wrap gap-2 text-black font-bold">
                   <p>${title.value}.</p>
@@ -40,7 +40,7 @@ const handleAddTask = () => {
                 <p class="pb-2 tracking-wide">${description.value}</p>
                 <div class="flex gap-1">
                   <button class="primary-btn">Edit</button>
-                  <button id="delete-btn" onclick="handelDeleteTask()" class="primary-btn">Delete</button>
+                  <button id="delete-btn" class="primary-btn" onclick="handleDeleteTask(event)">Delete</button>
                 </div>
               </li>
             `;
@@ -62,7 +62,7 @@ const handleAddTask = () => {
               <p class="pb-2 tracking-wide">${description.value}</p>
               <div class="flex gap-1">
                 <button class="primary-btn">Edit</button>
-                <button id="delete-btn" onclick="handelDeleteTask()" class="primary-btn">Delete</button>
+                <button id="delete-btn" class="primary-btn" onclick="handleDeleteTask(event)">Delete</button>
               </div>
             </li>
           `;
@@ -84,7 +84,7 @@ const handleAddTask = () => {
               <p class="pb-2 tracking-wide">${description.value}</p>
               <div class="flex gap-1">
                 <button class="primary-btn">Edit</button>
-                <button id="delete-btn" onclick="handelDeleteTask()" class="primary-btn">Delete</button>
+                <button id="delete-btn" class="primary-btn" onclick="handleDeleteTask(event)">Delete</button>
               </div>
             </li>
           `;
