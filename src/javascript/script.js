@@ -68,6 +68,68 @@ function handleAddTask() {
         document.querySelector("#err-mssg-deadline").style.display = "none";
         document.querySelector("#err-mssg-priorety").style.display = "none";
     }
+    showData();
+}
+
+// function to affiche all tasks in browser
+function showData() {
+    const redTasks = document.getElementById("red-card");
+    const orangeTasks = document.getElementById("orange-card");
+    const greenTasks = document.getElementById("green-card");
+    
+    let countRedTasks = 0;
+    let countOrangesTasks = 0;
+    let countGreensTasks = 0;
+
+    redTasks.innerHTML = ""; 
+    orangeTasks.innerHTML = "";
+    greenTasks.innerHTML = "";
+
+    tasks.forEach((task) => {
+        let taskHTML = document.createElement("li");
+        taskHTML.innerHTML = `
+            <li
+            class="task-card" id='${task.id}'
+            >
+                <div class="flex flex-wrap items-center h-full gap-2 text-black font-medium">
+                    <p class="font-bold">${task.title}.</p>
+                    <p class="text-xs text-darkGrayColor">#${task.id}</p>
+                </div>
+                <span class="font-medium text-xs">End date: ${task.deadline}</span>
+                <p class="pb-2 tracking-wide">${task.description}</p>
+                <div class="flex gap-1">
+                    <button id="edit-btn" class="primary-btn">Edit</button>
+                    <button id="delete-btn" class="primary-btn" onclick="handleDeleteTask('${task.id}')">Delete</button>
+                </div>
+            </li>
+        `;
+
+        // append the task to the corresponding section based on its statut (to-do, doing, done)
+        if(task.statut == "to-do") {
+            redTasks.appendChild(taskHTML)
+            countRedTasks++;
+        }
+        if(task.statut == "doing") {
+            orangeTasks.appendChild(taskHTML)
+            countOrangesTasks++;
+        }
+        if(task.statut == "done") {
+            greenTasks.appendChild(taskHTML)
+            countGreensTasks++;
+        }
+
+        document.getElementById("countRedTasks").innerHTML = "To-Do: " + countRedTasks;
+        document.getElementById("countOrangeTasks").innerHTML = "In progress: " + countOrangesTasks;
+        document.getElementById("countGreenTasks").innerHTML = "Done: " + countGreensTasks;
+
+        // add color to the task card based on its priorety
+        if(task.priorety == "P0")
+            document.getElementById(task.id).style.borderColor = "#ff4040";
+        if(task.priorety == "P1")
+            document.getElementById(task.id).style.borderColor = "#ffa373";
+        if(task.priorety == "P2")
+            document.getElementById(task.id).style.borderColor = "#1fd492";
+    });
 }
 
 // function to generate an id of 6 chiffres
@@ -81,6 +143,3 @@ function generateID() {
     }
     return ID.join("");
 }
-
-
-
