@@ -143,3 +143,20 @@ function generateID() {
     }
     return ID.join("");
 }
+
+
+function handleDeleteTask(id) {
+    let tmpTasks = [];
+    tasks.filter((task) => {
+        if(task.id != id) {
+            tmpTasks.push(task);
+        }
+    })
+    tasks = tmpTasks;
+    showData();
+    if(tasks.length == 0){
+        document.getElementById("countRedTasks").innerHTML = "To-Do: " + 0;
+        document.getElementById("countOrangeTasks").innerHTML = "In progress: " + 0;
+        document.getElementById("countGreenTasks").innerHTML = "Done: " + 0;
+    }
+}
