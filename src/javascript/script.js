@@ -243,7 +243,11 @@ searchInput.onkeyup = () => {
 
 // handle sorting tasks by thier priorety
 const sortIcon = document.getElementById("sort-icon");
-sortIcon.onclick = () => {
+sortIcon.addEventListener("click", () => {
+    document.getElementById("sort-menu").classList.toggle("hidden");
+})
+
+document.getElementById("asc-sort").onclick = () => {
     let tmpTasks = [];
     tasks.forEach((task) => {
         if(task.priorety == "P0")
@@ -258,4 +262,22 @@ sortIcon.onclick = () => {
             tmpTasks.push(task);
     })
     showData(tmpTasks);
+    document.getElementById("sort-menu").classList.toggle("hidden");
+}
+document.getElementById("desc-sort").onclick = () => {
+    let tmpTasks = [];
+    tasks.forEach((task) => {
+        if(task.priorety == "P2")
+            tmpTasks.push(task);
+    })
+    tasks.forEach((task) => {
+        if(task.priorety == "P1")
+            tmpTasks.push(task);
+    })
+    tasks.forEach((task) => {
+        if(task.priorety == "P0")
+            tmpTasks.push(task);
+    })
+    showData(tmpTasks);
+    document.getElementById("sort-menu").classList.toggle("hidden");
 }

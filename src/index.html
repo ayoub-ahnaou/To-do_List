@@ -17,7 +17,13 @@
           <div class="flex gap-1 flex-wrap">
             <input class="primary-input max-w-[200px] max-md:max-w-[100px] h-full" type="text" id="search-input" placeholder="search" />
             <button class="primary-btn h-full" id="add-btn">Add+</button>
-            <img src="assets/images/sort-icon.svg" title="sort by priorety" id="sort-icon" alt="arrow-down arrow-up" class="h-full py-1 cursor-pointer hover:bg-lightGrayColor rounded-md active:bg-mediumGrayColor">
+            <div class="h-full relative">
+              <img src="assets/images/sort-icon.svg" title="sort by priorety" id="sort-icon" alt="arrow-down arrow-up" class="h-full py-1 cursor-pointer hover:bg-lightGrayColor rounded-md active:bg-mediumGrayColor">
+              <div id="sort-menu" class="absolute -bottom-[65px] right-0 bg-white border w-20 hidden">
+                <div id="asc-sort" class="border-b px-2 hover:bg-lightGrayColor cursor-pointer">asc</div>
+                <div id="desc-sort" class="border-b px-2 hover:bg-lightGrayColor cursor-pointer">desc</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
