@@ -155,7 +155,7 @@ function handleDeleteTask(id) {
         }
     })
     tasks = tmpTasks;
-    showData();
+    showData(tasks);
     if(tasks.length == 0){
         document.getElementById("countRedTasks").innerHTML = "To-Do: " + 0;
         document.getElementById("countOrangeTasks").innerHTML = "In progress: " + 0;
@@ -213,7 +213,7 @@ function handleUpdateTask(id) {
 
     blurBg.style.filter = "blur(0px)";
     details.style.display = "none";
-    showData();
+    showData(tasks);
 }
 
 // TODO: the local storage functions
@@ -239,4 +239,23 @@ searchInput.onkeyup = () => {
     showData(taskTmp);
     if(searchInput.value == "")
         showData(tasks);
+}
+
+// handle sorting tasks by thier priorety
+const sortIcon = document.getElementById("sort-icon");
+sortIcon.onclick = () => {
+    let tmpTasks = [];
+    tasks.forEach((task) => {
+        if(task.priorety == "P0")
+            tmpTasks.push(task);
+    })
+    tasks.forEach((task) => {
+        if(task.priorety == "P1")
+            tmpTasks.push(task);
+    })
+    tasks.forEach((task) => {
+        if(task.priorety == "P2")
+            tmpTasks.push(task);
+    })
+    showData(tmpTasks);
 }
