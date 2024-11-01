@@ -11,7 +11,8 @@ let errStatut = document.querySelector("#err-mssg-statut");
 let errPriorety = document.querySelector("#err-mssg-priorety");
 let errDeadline = document.querySelector("#err-mssg-deadline");
 
-let tasks = [];
+let tasks = loadTasks();
+showData();
 // function to check value entered by user
 function handleAddTask() {
     if(!title.value || !description.value || !statut.value || !priorety.value){
@@ -96,7 +97,7 @@ function showData() {
                     <p class="text-xs text-darkGrayColor">#${task.id}</p>
                 </div>
                 <span class="font-medium text-xs">End date: ${task.deadline}</span>
-                <p class="pb-2 tracking-wide">${task.description}</p>
+                <p class="pb-2">${task.description.slice(0, 50)}...</p>
                 <div class="flex gap-1">
                     <button id="edit-btn" class="primary-btn" onclick="showDetails('${task.id}')">Edit</button>
                     <button id="delete-btn" class="secondary-btn" onclick="handleDeleteTask('${task.id}')">Delete</button>
@@ -130,6 +131,7 @@ function showData() {
         if(task.priorety == "P2")
             document.getElementById(task.id).style.borderColor = "#1fd492";
     });
+    saveTasks(tasks);
 }
 
 // function to generate an id of 6 chiffres
@@ -212,4 +214,15 @@ function handleUpdateTask(id) {
     blurBg.style.filter = "blur(0px)";
     details.style.display = "none";
     showData();
+}
+
+// TODO: the local storage functions
+// load all task from local storage to tasks array
+function loadTasks() {
+    return JSON.parse(localStorage.getItem("tasks")) || [];
+}
+
+// Save tasks in the local storage
+function saveTasks(tasksArray) {
+    localStorage.setItem("tasks", JSON.stringify(tasksArray));
 }
