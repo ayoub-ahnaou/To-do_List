@@ -12,7 +12,7 @@ let errPriorety = document.querySelector("#err-mssg-priorety");
 let errDeadline = document.querySelector("#err-mssg-deadline");
 
 let tasks = loadTasks();
-showData();
+showData(tasks);
 // function to check value entered by user
 function handleAddTask() {
     if(!title.value || !description.value || !statut.value || !priorety.value){
@@ -69,11 +69,11 @@ function handleAddTask() {
         document.querySelector("#err-mssg-deadline").style.display = "none";
         document.querySelector("#err-mssg-priorety").style.display = "none";
     }
-    showData();
+    showData(tasks);
 }
 
 // function to affiche all tasks in browser
-function showData() {
+function showData(tasks) {
     const redTasks = document.getElementById("red-card");
     const orangeTasks = document.getElementById("orange-card");
     const greenTasks = document.getElementById("green-card");
@@ -225,4 +225,18 @@ function loadTasks() {
 // Save tasks in the local storage
 function saveTasks(tasksArray) {
     localStorage.setItem("tasks", JSON.stringify(tasksArray));
+}
+
+// TODO: Search bar functionemment
+const searchInput = document.getElementById("search-input");
+searchInput.onkeyup = () => {
+    let taskTmp = [];
+    tasks.filter((task) => {
+        if(task.title.includes(searchInput.value)){
+          taskTmp.push(task); 
+        }
+    })
+    showData(taskTmp);
+    if(searchInput.value == "")
+        showData(tasks);
 }
