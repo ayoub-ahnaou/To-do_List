@@ -186,6 +186,9 @@ function showDetails(id) {
     }
   })
 
+  updateBtn.onclick = () => {
+    handleUpdateTask(id);
+  }
 }
 // close icon in details modal
 document.getElementById("cancel-btn").addEventListener("click", () => {
@@ -193,3 +196,20 @@ document.getElementById("cancel-btn").addEventListener("click", () => {
   details.style.display = "none";
 });
 
+// handle update a task
+const updateBtn = document.getElementById("update-btn");
+function handleUpdateTask(id) {
+    let statutDetails = document.getElementById("statut-details").value;
+    let prioretyDetails = document.getElementById("priorety-details").value;
+
+    tasks.filter((task) => {
+        if(task.id == id){
+            task.priorety = prioretyDetails;
+            task.statut = statutDetails;
+        }
+    })
+
+    blurBg.style.filter = "blur(0px)";
+    details.style.display = "none";
+    showData();
+}
