@@ -98,8 +98,8 @@ function showData() {
                 <span class="font-medium text-xs">End date: ${task.deadline}</span>
                 <p class="pb-2 tracking-wide">${task.description}</p>
                 <div class="flex gap-1">
-                    <button id="edit-btn" class="primary-btn">Edit</button>
-                    <button id="delete-btn" class="primary-btn" onclick="handleDeleteTask('${task.id}')">Delete</button>
+                    <button id="edit-btn" class="primary-btn" onclick="showDetails('${task.id}')">Edit</button>
+                    <button id="delete-btn" class="secondary-btn" onclick="handleDeleteTask('${task.id}')">Delete</button>
                 </div>
             </li>
         `;
@@ -144,7 +144,7 @@ function generateID() {
     return ID.join("");
 }
 
-
+// handle delete a task
 function handleDeleteTask(id) {
     let tmpTasks = [];
     tasks.filter((task) => {
@@ -160,3 +160,36 @@ function handleDeleteTask(id) {
         document.getElementById("countGreenTasks").innerHTML = "Done: " + 0;
     }
 }
+
+// handle show and hide the details page 
+const details = document.getElementById("details");
+const closeIconDetails = document.getElementById("close-icon-details");
+closeIconDetails.addEventListener("click", () => {
+  blurBg.style.filter = "blur(0px)";
+  details.style.display = "none"; 
+})
+
+// function to place information in thier place in the HTML code
+function showDetails(id) {
+  blurBg.style.filter = "blur(8px)";
+  details.style.display = "block";
+
+  tasks.forEach((task) => {
+    if(task.id == id){
+        // TODO: statut not showing in HTML
+        document.getElementById("title-details").textContent = task.title;
+        document.getElementById("id-details").textContent = "#" + task.id;
+        document.getElementById("deadline-details").textContent = task.deadline;
+        document.getElementById("desc-details").textContent = task.description;
+        document.getElementById("statut-details").value = task.statut;
+        document.getElementById("priorety-details").value = task.priorety;
+    }
+  })
+
+}
+// close icon in details modal
+document.getElementById("cancel-btn").addEventListener("click", () => {
+  blurBg.style.filter = "blur(0px)";
+  details.style.display = "none";
+});
+
