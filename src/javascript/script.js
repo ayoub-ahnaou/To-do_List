@@ -92,7 +92,7 @@ function showData() {
             class="task-card" id='${task.id}'
             >
                 <div class="flex flex-wrap items-center h-full gap-2 text-black font-medium">
-                    <p class="font-bold">${task.title}.</p>
+                    <p class="font-bold hover:underline cursor-pointer" onclick="showDetails('${task.id}')">${task.title}.</p>
                     <p class="text-xs text-darkGrayColor">#${task.id}</p>
                 </div>
                 <span class="font-medium text-xs">End date: ${task.deadline}</span>
