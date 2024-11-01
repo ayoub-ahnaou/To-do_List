@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="output.css" />
-    <script src="javascript/modal.js" defer></script>
-    <script src="javascript/addTask.js" defer></script>
-    <script src="javascript/deleteTask.js" defer></script>
+    <script src="javascript/modal.js" defer></script>    
+    <script src="javascript/script.js" defer ></script>
   </head>
   <body>
     <!--  -->
@@ -65,15 +64,16 @@
     <!-- modal to add a task -->
     <div
       id="modal"
-      class="absolute w-1/2 h-auto max-lg:w-2/3 max-md:w-[90%] z-10 rounded-md bg-white shadow-2xl left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 py-2 px-4 hidden"
+      class="absolute h-full w-full hidden"
     >
-      <span
+      <div class="absolute w-1/2 h-auto max-lg:w-2/3 max-md:w-[90%] z-10 rounded-md bg-white shadow-[0_0_10px_rgba(0,0,0,0.8)] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 py-2 px-4">
+        <span
         id="close-icon"
         onclick=""
         class="absolute top-4 right-[10px] hover:bg-lightGrayColor cursor-pointer px-2 rounded-full"
         >x</span
       >
-      <h1 class="text-lg font-medium py-2">Task Informations</h1>
+      <h1 class="text-lg font-medium py-2">Task Informations - Add</h1>
       <hr>
       <div class="flex flex-col gap-2 py-4 text-sm" id="modal-box">
         <!-- FIX: input of title -->
@@ -84,17 +84,76 @@
         <label class="text-darkGrayColor text-sm" for="description">Description: </label>
         <span class="bg-red-50 text-red-500 px-2 hidden" id="err-mssg-desc">This field is obligatoire, Write a description</span>
         <textarea id="description" rows="5" class="primary-input resize-none pt-2" placeholder="Enter a task description" type="text"></textarea>
-        <!-- FIX: selection of statut -->
-        <label class="text-darkGrayColor text-sm" for="statut">Statut: </label>
-        <span class="bg-red-50 text-red-500 px-2 hidden" id="err-mssg-statut">This field is obligatoire, select a statut</span>
-        <select id="statut" class="primary-input mb-4">
-            <option value="" class="" selected disabled>Select a statut for your task</option>
-            <option value="to-do">To-Do</option>
-            <option value="doing">Doing</option>
-            <option value="done">Done</option>
-        </select>
+        
+        <div class="flex gap-2 max-md:flex-col max-md:gap-0">
+          <!-- FIX: section of statut -->
+          <div class="flex-1">
+            <label class="text-darkGrayColor text-sm" for="statut">Statut: </label>
+            <span class="bg-red-50 text-red-500 px-2 mb-2 hidden" id="err-mssg-statut">This field is obligatoire, select a statut</span>
+            <select id="statut" class="primary-input">
+              <option value="" class="" selected disabled>Select a statut for your task</option>
+              <option value="to-do">To-Do</option>
+              <option value="doing">Doing</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+          <!-- FIX: section of statut -->
+          <div class="flex-1">
+            <label class="text-darkGrayColor text-sm" for="priorety">Priorety: </label>
+            <span class="bg-red-50 text-red-500 px-2 mb-2 hidden" id="err-mssg-priorety">This field is obligatoire, select a priority</span>
+            <select id="priorety" class="primary-input">
+              <option value="" class="" selected disabled>Select the priorety of your task</option>
+              <option value="P0">P0</option>
+              <option value="P1">P1</option>
+              <option value="P2">P2</option>
+            </select>
+          </div>
+          <div class="flex-1">
+            <label class="text-darkGrayColor text-sm" for="deadline">End date: </label>
+            <span class="bg-red-50 text-red-500 px-2 mb-2 hidden" id="err-mssg-deadline">This field is obligatoire, select a valid date</span>
+            <input class="primary-input mb-4" id="deadline" type="date">
+          </div>
+        </div>
         <button class="primary-btn py-2 font-bold" onclick="handleAddTask()">Add</button>
       </div>
+      </div>
     </div>
+
+    <!-- modal of more information and update possibility -->
+     <div id="details" class="absolute w-full min-h-full hidden">
+      <div class="absolute h-full w-2/3 max-md:w-full right-0 bg-white rounded-l-lg shadow-[0_0_10px_rgba(0,0,0,0.8)] flex flex-col justify-between py-2 px-4">
+        <span id="close-icon-details" class="absolute top-5 right-[10px] hover:bg-lightGrayColor cursor-pointer px-2 rounded-full">
+          x
+        </span>
+        <div class="">
+          <p class="text-xl max-md:text-sm font-bold pt-2 pr-6">Title: Lorem ipsum dolor sit amet consectetur.</p>
+          <p class="text-lg max-md:text-sm text-darkGrayColor">#ERE43F</p>
+          <hr class="my-3">
+          <p class="font-mono"><span class="font-bold">End Date: </span>12-12-2024</p>
+          <p class="py-4 pr-6 max-md:pr-0 font-mono max-md:text-xs">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus suscipit magni reiciendis doloribus quas asperiores? Eius excepturi, enim maiores laborum necessitatibus cumque. Perferendis ullam, voluptate exercitationem molestiae facilis minus nesciunt dolorem beatae modi facere eveniet fuga, vero accusantium animi consequuntur ducimus cum ad provident ab soluta? Porro tempore expedita quaerat!</p>
+          <hr>
+          <div class="text-sm flex flex-col gap-2 mt-3">
+            <label for="statut-edit" class="text-sm">Statut: </label>
+            <select name="" id="statut-edit" class="w-1/2 bg-red-500 primary-input">
+              <option value="to-do">to-do</option>
+              <option value="doing">doing</option>
+              <option value="done">done</option>
+            </select>
+
+            <label for="priorety-edit" class="text-sm mt-2">Priorety: </label>
+            <select name="" id="priorety-edit" class="w-1/2 bg-red-500 primary-input">
+              <option value="P0">P0</option>
+              <option value="P1">P1</option>
+              <option value="P2">P2</option>
+            </select>
+          </div>
+        </div>
+        <div class="">
+          <hr class="my-3">
+          <button class="secondary-btn py-2" id="cancel-btn">Cancel</button>
+          <button class="primary-btn py-2">Update</button>
+        </div>
+      </div>
+     </div>
   </body>
 </html>
