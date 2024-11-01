@@ -17,6 +17,9 @@ body {
 .primary-btn {
     @apply px-4 text-[10px] bg-black rounded-md outline-none text-center text-lightGrayColor;
 }
+.secondary-btn {
+    @apply px-4 text-[10px] text-black rounded-md outline-none text-center bg-mediumGrayColor;
+}
 .primary-input {
     @apply bg-lightGrayColor px-2 rounded-md outline-none border focus:border-black w-full;
 }
@@ -24,5 +27,5 @@ body {
     border: 1px solid red;
 }
 .task-card {
-    @apply bg-white rounded-sm min-h-24 p-4 text-darkGrayColor text-sm flex flex-col gap-1 border-b;
+    @apply bg-white rounded-sm min-h-24 p-4 text-darkGrayColor text-sm flex flex-col gap-1 border-b-2 border-l-2;
 }
