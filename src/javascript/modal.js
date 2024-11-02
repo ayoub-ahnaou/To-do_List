@@ -26,4 +26,5 @@ const addBtn = document.getElementById("add-btn");
 addBtn.addEventListener("click", () => {
   modal.style.display = "block";
   blurBg.style.filter = "blur(8px)";
+  title.focus();
 });
