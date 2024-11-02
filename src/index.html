@@ -18,7 +18,7 @@
             <input class="primary-input max-w-[200px] max-md:max-w-[100px] h-full" type="text" id="search-input" placeholder="search" />
             <button class="primary-btn h-full" id="add-btn">Add+</button>
             <div class="h-full relative">
-              <img src="assets/images/sort-icon.svg" title="sort by priorety" id="sort-icon" alt="arrow-down arrow-up" class="h-full py-1 cursor-pointer hover:bg-lightGrayColor rounded-md active:bg-mediumGrayColor">
+              <img src="assets/images/sort-icon.svg" title="sort by priority" id="sort-icon" alt="arrow-down arrow-up" class="h-full py-1 cursor-pointer hover:bg-lightGrayColor rounded-md active:bg-mediumGrayColor">
               <div id="sort-menu" class="absolute -bottom-[65px] right-0 bg-white border w-20 hidden">
                 <div id="asc-sort" class="border-b px-2 hover:bg-lightGrayColor cursor-pointer">asc</div>
                 <div id="desc-sort" class="border-b px-2 hover:bg-lightGrayColor cursor-pointer">desc</div>
@@ -106,10 +106,10 @@
           </div>
           <!-- FIX: section of statut -->
           <div class="flex-1">
-            <label class="text-darkGrayColor text-sm" for="priorety">Priorety: </label>
+            <label class="text-darkGrayColor text-sm" for="priorety">Priority: </label>
             <span class="bg-red-50 text-red-500 px-2 mb-2 hidden" id="err-mssg-priorety">This field is obligatoire, select a priority</span>
             <select id="priorety" class="primary-input">
-              <option value="" class="" selected disabled>Select the priorety of your task</option>
+              <option value="" class="" selected disabled>Select the priority of your task</option>
               <option value="P0">P0</option>
               <option value="P1">P1</option>
               <option value="P2">P2</option>
@@ -128,7 +128,7 @@
 
     <!-- modal of more information and update possibility -->
      <div id="details" class="absolute w-full min-h-full hidden">
-      <div class="absolute h-full w-2/3 max-md:w-full right-0 bg-white rounded-l-lg shadow-[0_0_10px_rgba(0,0,0,0.8)] flex flex-col justify-between py-2 px-4">
+      <div class="absolute h-auto min-h-full w-2/3 max-md:w-full right-0 bg-white rounded-l-lg shadow-[0_0_10px_rgba(0,0,0,0.8)] flex flex-col justify-between py-2 px-4">
         <span id="close-icon-details" class="absolute top-5 right-[10px] hover:bg-lightGrayColor cursor-pointer px-2 rounded-full">
           x
         </span>
@@ -147,7 +147,7 @@
               <option value="done">done</option>
             </select>
 
-            <label for="priorety-details" class="text-sm mt-2">Priorety: </label>
+            <label for="priorety-details" class="text-sm mt-2">Priority: </label>
             <select id="priorety-details" class="w-1/2 bg-red-500 primary-input">
               <option value="P0">P0</option>
               <option value="P1">P1</option>
