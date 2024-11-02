@@ -14,61 +14,119 @@ let errDeadline = document.querySelector("#err-mssg-deadline");
 let tasks = loadTasks();
 showData(tasks);
 // function to check value entered by user
-function handleAddTask() {
-    if(!title.value || !description.value || !statut.value || !priorety.value){
-        if(!title.value) errTitle.style.display = "block";
-        else errTitle.style.display = "none";
+function validValues(){
+    let isValid = true;
+    if(!title.value){
+        errTitle.style.display = "block";
+        isValid = false;
+    }
+    else errTitle.style.display = "none";
 
-        if(!description.value) errDesc.style.display = "block";
-        else errDesc.style.display = "none";
+    if(!description.value) {
+        errDesc.style.display = "block";
+        isValid = false;
+    }
+    else errDesc.style.display = "none";
 
-        if(!statut.value) errStatut.style.display = "block";
-        else errStatut.style.display = "none";
+    if(!statut.value) {
+        errStatut.style.display = "block";
+        isValid = false;
+    }
+    else errStatut.style.display = "none";
 
-        if(!priorety.value) errPriorety.style.display = "block";
-        else errPriorety.style.display = "none";
+    if(!priorety.value) {
+        errPriorety.style.display = "block";
+        isValid = false;
+    }
+    else errPriorety.style.display = "none";
 
-        if(!deadline.value) errDeadline.style.display = "block";
-        else errDeadline.style.display = "none";
-
-        let date = new Date(deadline);
-        if(date.getMonth() < new Date().getMonth()){
-            if(date.getFullYear() < new Date().getFullYear()){
-                errDeadline.innerHTML = "You choose a year already gone. Use a valid year";
+    const date = new Date(deadline.value);
+    const dateNow = new Date();
+    if(!deadline.value){
+        errDeadline.style.display = "block";
+        isValid = false;
+    }
+    
+    if(deadline.value){
+        if(date.getFullYear() == dateNow.getFullYear() && date.getMonth() == dateNow.getMonth() && date.getUTCDate() < dateNow.getUTCDate()){
+            errDeadline.style.display = "block";
+            errDeadline.innerHTML = "Date chossen is already gone...";
+            isValid = false;
+        }
+        // year == 2024
+        if(date.getFullYear() == dateNow.getFullYear()){
+            // month == 11
+            if(date.getMonth() == dateNow.getMonth()){
+                // day < 2 ==> error: "day chossen is gone"
+                if(date.getUTCDate() < dateNow.getUTCDate()){
+                    errDeadline.style.display = "block";
+                    errDeadline.innerHTML = "Day choosen is gone...";
+                    isValid = false;
+                }
+                // day >= 2 ==> succes: "display none"
+                if(date.getUTCDate() >= dateNow.getUTCDate()){
+                    errDeadline.style.display = "none";
+                }
             }
-            else errDeadline.innerHTML = "You choose a month already gone. Use a valid year";
+            // month < 11 ==> error: "month chossen is gone"
+            else if(date.getMonth() < dateNow.getMonth()){
+                errDeadline.style.display = "block";
+                errDeadline.innerHTML = "Month choosen is gone...";
+                isValid = false;
+            }
+            // month > 11 ==> succes: "display none"
+            else errDeadline.style.display = "none";
+        }
+        // year > 2024 ==> succes: "display none"
+        else if(date.getFullYear() > dateNow.getFullYear()){
+            errDeadline.style.display = "none";
+        }
+        // year < 2024 ==> erroe: "yrear choosen is gone"
+        else {
+            errDeadline.style.display = "block";
+            errDeadline.innerHTML = "Year choosen is gone...";
+            isValid = false;
         }
     }
-    else{
-        const ID = generateID();
-        let task = {
-            id: ID,
-            title: title.value,
-            description: description.value,
-            statut: statut.value,
-            deadline: deadline.value,
-            priorety: priorety.value,
-        }
-        tasks.push(task);
+    errDeadline.style.display = "block";
 
-        // clear all inputs after clicking the "add" button
-        modal.style.display = "none";
-        blurBg.style.filter = "blur(0px)";
+    return isValid;
+}
 
-        // make all inputs empty after closing the modal window
-        document.getElementById("title").value = "";
-        document.getElementById("description").value = "";
-        document.getElementById("statut").value = "";
-        document.getElementById("deadline").value = "";
-        document.getElementById("priorety").value = "";
 
-        // hide the error messages
-        document.querySelector("#err-mssg-title").style.display = "none";
-        document.querySelector("#err-mssg-desc").style.display = "none";
-        document.querySelector("#err-mssg-statut").style.display = "none";
-        document.querySelector("#err-mssg-deadline").style.display = "none";
-        document.querySelector("#err-mssg-priorety").style.display = "none";
+function handleAddTask() {
+    if(!validValues()){
+        return;
     }
+    const ID = generateID();
+    let task = {
+        id: ID,
+        title: title.value,
+        description: description.value,
+        statut: statut.value,
+        deadline: deadline.value,
+        priorety: priorety.value,
+    }
+    tasks.push(task);
+
+    // clear all inputs after clicking the "add" button
+    modal.style.display = "none";
+    blurBg.style.filter = "blur(0px)";
+
+    // make all inputs empty after closing the modal window
+    document.getElementById("title").value = "";
+    document.getElementById("description").value = "";
+    document.getElementById("statut").value = "";
+    document.getElementById("deadline").value = "";
+    document.getElementById("priorety").value = "";
+
+    // hide the error messages
+    document.querySelector("#err-mssg-title").style.display = "none";
+    document.querySelector("#err-mssg-desc").style.display = "none";
+    document.querySelector("#err-mssg-statut").style.display = "none";
+    document.querySelector("#err-mssg-deadline").style.display = "none";
+    document.querySelector("#err-mssg-priorety").style.display = "none";
+    
     showData(tasks);
 }
 
@@ -86,6 +144,7 @@ function showData(tasks) {
     orangeTasks.innerHTML = "";
     greenTasks.innerHTML = "";
 
+    // FIX: Make description text responsive (it overflow his div)
     tasks.forEach((task) => {
         let taskHTML = document.createElement("li");
         taskHTML.innerHTML = `
