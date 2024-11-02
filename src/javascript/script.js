@@ -340,3 +340,8 @@ document.getElementById("desc-sort").onclick = () => {
     showData(tmpTasks);
     document.getElementById("sort-menu").classList.toggle("hidden");
 }
+
+// loading animation
+setTimeout(() => {
+    document.getElementById("loader").style.display = "none";
+}, 1500);

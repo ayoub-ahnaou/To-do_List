@@ -9,6 +9,12 @@
     <script src="javascript/script.js" defer ></script>
   </head>
   <body>
+
+    <!-- loading animation -->
+    <div id="loader" class="loading absolute w-full h-full center bg-lightGrayColor z-10">
+      <div class="circle"></div>
+    </div>
+
     <!--  -->
     <div id="blur-bg">
       <div class="my-container center h-12 bg-white shadow-md">
@@ -29,7 +35,7 @@
       </div>
 
       <!-- taches container -->
-      <div class="my-container p-4 h-full">
+      <div class="my-container relative p-4 h-full">
         <div
           class="h-full w-full max-md:h-auto flex justify-between gap-4 max-md:flex-col"
         >

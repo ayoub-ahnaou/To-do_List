@@ -18,7 +18,7 @@ body {
     @apply px-4 text-[10px] bg-black rounded-md outline-none text-center text-lightGrayColor;
 }
 .secondary-btn {
-    @apply px-4 text-[10px] text-black rounded-md outline-none text-center bg-mediumGrayColor;
+    @apply px-4 text-[10px] text-black rounded-md outline-none text-center bg-mediumGrayColor active:bg-darkGrayColor;
 }
 .primary-input {
     @apply bg-lightGrayColor px-2 rounded-md outline-none border focus:border-black w-full;
@@ -28,4 +28,18 @@ body {
 }
 .task-card {
     @apply bg-white rounded-sm min-h-24 p-4 text-darkGrayColor text-sm flex flex-col gap-1 border-b-2 border-l-2;
+}
+
+.circle {
+    border: 5px solid #e0e0e0;
+    border-top: 5px solid #bdbdbd;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    animation: sweep 1s infinite linear;
+}
+
+@keyframes sweep {
+    0% { rotate: 0deg; }
+    100% { rotate: 360deg; }
 }
