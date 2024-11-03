@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="output.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="javascript/modal.js" defer></script>    
     <script src="javascript/script.js" defer ></script>
   </head>
@@ -20,11 +21,11 @@
       <div class="my-container center h-12 bg-white shadow-md">
         <div class="flex justify-between w-full h-1/2">
           <div class="font-bold">To-Do LIST</div>
-          <div class="flex gap-1 flex-wrap">
+          <div class="flex gap-1 max-md:flex-wrap">
             <input class="primary-input max-w-[200px] max-md:max-w-[100px] h-full" type="text" id="search-input" placeholder="search" />
             <button class="primary-btn h-full" id="add-btn">Add+</button>
             <div class="h-full relative">
-              <img src="assets/images/sort-icon.svg" title="sort by priority" id="sort-icon" alt="arrow-down arrow-up" class="h-full py-1 cursor-pointer hover:bg-lightGrayColor rounded-md active:bg-mediumGrayColor">
+              <img src="assets/images/sort-icon.svg" title="sort by priority" id="sort-icon" alt="arrow-down arrow-up" class="h-full py-1 cursor-pointer hover:bg-lightGrayColor rounded-md active:bg-mediumGrayColor px-2">
               <div id="sort-menu" class="absolute z-10 -bottom-[65px] right-0 bg-white border w-20 hidden">
                 <div id="asc-sort" class="border-b px-2 hover:bg-lightGrayColor cursor-pointer">asc</div>
                 <div id="desc-sort" class="border-b px-2 hover:bg-lightGrayColor cursor-pointer">desc</div>
@@ -133,8 +134,8 @@
     </div>
 
     <!-- modal of more information and update possibility -->
-     <div id="details" class="absolute w-full min-h-full hidden">
-      <div class="absolute h-auto min-h-full w-2/3 max-md:w-full right-0 bg-white rounded-l-lg shadow-[0_0_10px_rgba(0,0,0,0.8)] flex flex-col justify-between py-2 px-4">
+     <div id="details" class="absolute w-full min-h-full -right-[-100%] transition-all delay-500 ease-in-out">
+      <div class="absolute h-auto min-h-full w-1/2 max-md:w-full bg-white rounded-l-lg shadow-[0_0_10px_rgba(0,0,0,0.8)] flex flex-col justify-between py-2 px-4">
         <span id="close-icon-details" class="absolute top-5 right-[10px] hover:bg-lightGrayColor cursor-pointer px-2 rounded-full">
           x
         </span>
