@@ -3,9 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>To-Do List</title>
     <link rel="stylesheet" href="output.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
     <script src="javascript/modal.js" defer></script>    
     <script src="javascript/script.js" defer ></script>
   </head>
@@ -26,9 +25,9 @@
             <button class="primary-btn h-full" id="add-btn">Add+</button>
             <div class="h-full relative">
               <img src="assets/images/sort-icon.svg" title="sort by priority" id="sort-icon" alt="arrow-down arrow-up" class="h-full py-1 cursor-pointer hover:bg-lightGrayColor rounded-md active:bg-mediumGrayColor px-2">
-              <div id="sort-menu" class="absolute z-10 -bottom-[65px] right-0 bg-white border w-20 hidden">
-                <div id="asc-sort" class="border-b px-2 hover:bg-lightGrayColor cursor-pointer">asc</div>
-                <div id="desc-sort" class="border-b px-2 hover:bg-lightGrayColor cursor-pointer">desc</div>
+              <div id="sort-menu" class="absolute z-10 -bottom-[65px] right-0 bg-white border w-40 hidden max-md:text-sm">
+                <div id="asc-sort" class="border-b px-2 hover:bg-lightGrayColor cursor-pointer">Most Important</div>
+                <div id="desc-sort" class="border-b px-2 hover:bg-lightGrayColor cursor-pointer">Least Important</div>
               </div>
             </div>
           </div>
@@ -36,7 +35,7 @@
       </div>
 
       <!-- taches container -->
-      <div class="my-container relative p-4 h-full">
+      <div class="relative p-4 h-full my-container">
         <div
           class="h-full w-full max-md:h-auto flex justify-between gap-4 max-md:flex-col"
         >
@@ -135,7 +134,7 @@
 
     <!-- modal of more information and update possibility -->
      <div id="details" class="absolute w-full min-h-full -right-[-100%] transition-all delay-500 ease-in-out">
-      <div class="absolute h-auto min-h-full w-1/2 max-md:w-full bg-white rounded-r-lg shadow-[0_0_10px_rgba(0,0,0,0.8)] flex flex-col justify-between py-2 px-4">
+      <div class="absolute h-auto min-h-full w-1/2 max-lg:w-3/4 max-lg:text-[14px] max-md:w-full bg-white rounded-r-lg shadow-[0_0_10px_rgba(0,0,0,0.8)] flex flex-col justify-between py-2 px-4">
         <span id="close-icon-details" class="absolute top-5 right-[10px] hover:bg-lightGrayColor cursor-pointer px-2 rounded-full">
           x
         </span>
@@ -148,14 +147,14 @@
           <hr>
           <div class="text-sm flex flex-col gap-2 mt-3">
             <label for="statut-details" class="text-sm">Statut: </label>
-            <select id="statut-details" class="w-1/2 primary-input">
+            <select id="statut-details" class="w-1/2 max-md:w-full primary-input">
               <option value="to-do">to-do</option>
               <option value="doing">doing</option>
               <option value="done">done</option>
             </select>
 
             <label for="priorety-details" class="text-sm mt-2">Priority: </label>
-            <select id="priorety-details" class="w-1/2 primary-input">
+            <select id="priorety-details" class="w-1/2 max-md:w-full primary-input">
               <option value="P0">P0</option>
               <option value="P1">P1</option>
               <option value="P2">P2</option>
