@@ -226,14 +226,16 @@ function handleDeleteTask(id) {
 const details = document.getElementById("details");
 const closeIconDetails = document.getElementById("close-icon-details");
 closeIconDetails.addEventListener("click", () => {
-  blurBg.style.filter = "blur(0px)";
-  details.style.display = "none"; 
+    details.style.right = "100%";
+    blurBg.style.filter = "blur(0px)";
+    details.style.display = "none"; 
 })
 
 // function to place information in thier place in the HTML code
 function showDetails(id) {
-  blurBg.style.filter = "blur(8px)";
-  details.style.display = "block";
+    details.style.right = "0";   
+    details.style.display = "block";
+    blurBg.style.filter = "blur(8px)";
 
   tasks.forEach((task) => {
     if(task.id == id){
@@ -345,3 +347,8 @@ document.getElementById("desc-sort").onclick = () => {
 setTimeout(() => {
     document.getElementById("loader").style.display = "none";
 }, 1500);
+
+// make logo clickable and refresh page if it clicked
+document.getElementById("logo").addEventListener("click", () => {
+    location.reload()
+})
