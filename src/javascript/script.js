@@ -20,6 +20,13 @@ function validValues(){
         errTitle.style.display = "block";
         isValid = false;
     }
+
+    if(title.value.length >= 80){
+        errTitle.style.display = "block";
+        errTitle.innerHTML = "Title is too long, make it smaller!"
+        isValid = true;
+    }
+
     else errTitle.style.display = "none";
 
     if(!description.value) {
@@ -152,11 +159,11 @@ function showData(tasks) {
             class="task-card" id='${task.id}'
             >
                 <div class="flex flex-wrap items-center h-full gap-2 text-black font-medium">
-                    <p class="font-bold hover:underline cursor-pointer" onclick="showDetails('${task.id}')">${task.title}.</p>
+                    <p class="font-bold hover:underline cursor-pointer break-words" onclick="showDetails('${task.id}')">${task.title}.</p>
                     <p class="text-xs text-darkGrayColor">#${task.id}</p>
                 </div>
                 <span class="font-medium text-xs">End date: ${task.deadline}</span>
-                <p class="pb-2">${task.description.slice(0, 50)}...</p>
+                <p class="pb-2 break-words">${task.description.slice(0, 50)}...</p>
                 <div class="flex gap-1">
                     <button id="edit-btn" class="primary-btn" onclick="showDetails('${task.id}')">Edit</button>
                     <button id="delete-btn" class="secondary-btn" onclick="handleDeleteTask('${task.id}')">Delete</button>
@@ -293,7 +300,7 @@ const searchInput = document.getElementById("search-input");
 searchInput.onkeyup = () => {
     let taskTmp = [];
     tasks.filter((task) => {
-        if(task.title.includes(searchInput.value)){
+        if(task.title.toLowerCase().includes(searchInput.value.toLowerCase())){
           taskTmp.push(task); 
         }
     })
