@@ -20,13 +20,13 @@ function validValues(){
         errTitle.style.display = "block";
         isValid = false;
     }
-
-    if(title.value.length >= 80){
+    else errTitle.style.display = "none";
+    
+    if(title.value.length > 80){
         errTitle.style.display = "block";
-        errTitle.innerHTML = "Title is too long, make it smaller!"
+        errTitle.innerHTML = "Title is too long, maximum caracters is 80!"
         isValid = false;
     }
-
     else errTitle.style.display = "none";
 
     if(!description.value) {
@@ -308,46 +308,47 @@ searchInput.onkeyup = () => {
         showData(tasks);
 }
 
-// handle sorting tasks by thier priorety
-const sortIcon = document.getElementById("sort-icon");
-sortIcon.addEventListener("click", () => {
-    document.getElementById("sort-menu").classList.toggle("hidden");
+// handle filtring task by thier priority
+const filterIcon = document.getElementById("filter-icon");
+filterIcon.addEventListener("click", () => {
+    document.getElementById("filter-menu").classList.toggle("hidden");
+    document.getElementById("sort-menu").classList.add("hidden");
 })
-
-document.getElementById("asc-sort").onclick = () => {
+// TODO: priority P0
+document.getElementById("filter-p0").addEventListener("click", () => {
     let tmpTasks = [];
     tasks.forEach((task) => {
         if(task.priorety == "P0")
             tmpTasks.push(task);
     })
+    showData(tmpTasks);
+    document.getElementById("filter-menu").classList.add("hidden")
+})
+// TODO: priority P1
+document.getElementById("filter-p1").addEventListener("click", () => {
+    let tmpTasks = [];
     tasks.forEach((task) => {
         if(task.priorety == "P1")
             tmpTasks.push(task);
     })
-    tasks.forEach((task) => {
-        if(task.priorety == "P2")
-            tmpTasks.push(task);
-    })
     showData(tmpTasks);
-    document.getElementById("sort-menu").classList.toggle("hidden");
-}
-document.getElementById("desc-sort").onclick = () => {
+    document.getElementById("filter-menu").classList.add("hidden")
+})
+// TODO: priority P2
+document.getElementById("filter-p2").addEventListener("click", () => {
     let tmpTasks = [];
     tasks.forEach((task) => {
         if(task.priorety == "P2")
             tmpTasks.push(task);
     })
-    tasks.forEach((task) => {
-        if(task.priorety == "P1")
-            tmpTasks.push(task);
-    })
-    tasks.forEach((task) => {
-        if(task.priorety == "P0")
-            tmpTasks.push(task);
-    })
     showData(tmpTasks);
-    document.getElementById("sort-menu").classList.toggle("hidden");
-}
+    document.getElementById("filter-menu").classList.add("hidden")
+})
+// TODO: priority All
+document.getElementById("filter-all").addEventListener("click", () => {
+    showData(tasks);
+    document.getElementById("filter-menu").classList.add("hidden")
+})
 
 // loading animation
 setTimeout(() => {

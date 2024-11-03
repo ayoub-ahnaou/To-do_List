@@ -7,7 +7,7 @@ application de gestion de tâches développée pour améliorer l'efficacité des
 
 ### Liens exterieurs
 - [**Live Demo.**](https://ayoub-ahnaou.github.io/To-do_List/src/)
-- [**Presentation Canva.**]()
+- [**Presentation Canva.**](https://www.canva.com/design/DAGVdPXl0i4/eUM-LfuF9piQayjITSXDsg/edit)
 - [**Planification de projet.**](https://github.com/users/ayoub-ahnaou/projects/1)
 
 
