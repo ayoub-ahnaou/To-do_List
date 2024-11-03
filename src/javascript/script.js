@@ -293,7 +293,7 @@ const searchInput = document.getElementById("search-input");
 searchInput.onkeyup = () => {
     let taskTmp = [];
     tasks.filter((task) => {
-        if(task.title.includes(searchInput.value)){
+        if(task.title.toLowerCase().includes(searchInput.value.toLowerCase())){
           taskTmp.push(task); 
         }
     })
