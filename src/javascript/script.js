@@ -308,6 +308,46 @@ searchInput.onkeyup = () => {
         showData(tasks);
 }
 
+// handle sorting tasks by thier deadline
+const sortIcon = document.getElementById("sort-icon");
+sortIcon.addEventListener("click", () => {
+    document.getElementById("sort-menu").classList.toggle("hidden");
+    document.getElementById("filter-menu").classList.add("hidden");
+})
+
+document.getElementById("desc-sort").onclick = () => {
+    // decroissant: 99 --> 0
+    let tmpTasks = tasks;
+
+    for(let i=1; i<tmpTasks.length; i++){
+        if(new Date(tmpTasks[i-1].deadline) < new Date(tmpTasks[i].deadline)){
+            let tmp = tmpTasks[i];
+            tmpTasks[i] = tmpTasks[i - 1];
+            tmpTasks[i - 1] = tmp;
+        }
+    }
+
+    showData(tmpTasks);
+
+    document.getElementById("sort-menu").classList.toggle("hidden");
+}
+document.getElementById("asc-sort").onclick = () => {
+    // roissant: 0 --> 99
+    let tmpTasks = tasks;
+
+    for(let i=1; i<tmpTasks.length; i++){
+        if(new Date(tmpTasks[i-1].deadline) > new Date(tmpTasks[i].deadline)){
+            let tmp = tmpTasks[i];
+            tmpTasks[i] = tmpTasks[i - 1];
+            tmpTasks[i - 1] = tmp;
+        }
+    }   
+
+    showData(tmpTasks);
+
+    document.getElementById("sort-menu").classList.toggle("hidden");
+}
+
 // handle filtring task by thier priority
 const filterIcon = document.getElementById("filter-icon");
 filterIcon.addEventListener("click", () => {
