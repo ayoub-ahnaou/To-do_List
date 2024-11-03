@@ -24,7 +24,7 @@ function validValues(){
     if(title.value.length >= 80){
         errTitle.style.display = "block";
         errTitle.innerHTML = "Title is too long, make it smaller!"
-        isValid = true;
+        isValid = false;
     }
 
     else errTitle.style.display = "none";
@@ -95,7 +95,6 @@ function validValues(){
             isValid = false;
         }
     }
-    errDeadline.style.display = "block";
 
     return isValid;
 }
